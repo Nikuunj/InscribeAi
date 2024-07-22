@@ -1,12 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub,faTwitter } from '@fortawesome/free-brands-svg-icons';
+import img from "../assets/footerFoot.png";
 
 function Footer() {
   return (
     <>
       <img 
-        src="src/assets/footerFoot.png" 
+        src={img}
         alt="Footer Decoration" 
         className="w-screen h-48" 
       />

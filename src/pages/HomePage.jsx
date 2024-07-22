@@ -2,6 +2,7 @@ import React from 'react';
 import Left from '../componets/Left';
 import Right from '../componets/Right';
 import { motion } from 'framer-motion';
+import headFoot from '../assets/headfoot.png'
 
 function HomePage() {
   const container = {
@@ -30,7 +31,7 @@ function HomePage() {
       variants={container}
       initial="hidden"
       animate="visible">
-    <img src="src/assets/headfoot.png" className='w-screen h-48' />
+    <img src={headFoot} className='w-screen h-48' />
     </motion.div>
     </>
   );
