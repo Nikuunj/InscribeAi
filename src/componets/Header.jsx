@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Linkss from './Linkss';
 import { motion } from 'framer-motion';
+import logo from "../assets/logo.png";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -21,6 +22,11 @@ const item = {
     y: 0,
     opacity: 1,
   },
+};
+
+const logoStyle = {
+  height: '40px', // Adjust the height as needed
+  width: '150px',  // Adjust the width as needed
 };
 
 function Header() {
@@ -55,9 +61,9 @@ function Header() {
       animate='visible'
     >
       <motion.div className='item ms-4' variants={item}>
-        <Link to='/' className='hover:text-[#088395] duration-500 text-[#37B7C3]'>
-          Logo
-        </Link>
+        <a href="#home">
+          <img src={logo} alt="logo-icon" style={logoStyle} />
+        </a>
       </motion.div>
 
       <motion.div className='mx-auto my-0 item' variants={item}>

@@ -66,15 +66,15 @@ function Left() {
           {render}
         </div>
         <div className='flex self-start'>
-          <Link to='/product' className='w-[100%]'>
+          <a href="#form" className="">
             <motion.div className='item w-80 py-2 mt-16 text-center rounded-lg hover:bg-transparent border-2 duration-500	border-[#37B7C3] font-[325]'
             variants={item}
             >
             <span className={`text-[45px] font-[300] bg-gradient-to-r bg-clip-text text-transparent from-blue-500 via-purple-500 to-pink-500 p-1 rounded-md`}>
-              Shoping
+              Create Blog
             </span>
             </motion.div>
-          </Link>
+          </a>
         </div>
       </motion.div>
     </motion.div>

@@ -8,7 +8,7 @@ function Footer() {
     <>
       <img 
         src={img}
-        alt="Footer Decoration" 
+        alt="Footer Decoration"
         className="w-screen h-48" 
       />
       <footer className="bg-[#071952] text-white py-6" id='footer'>
@@ -44,7 +44,7 @@ function Footer() {
             </div>
           </div>
           <div className="text-center text-sm mt-8 border-t border-gray-700 pt-4">
-            &copy; 2024 Your Company Name. All rights reserved.
+            &copy; 2024 InscribeAI. All rights reserved.
           </div>
         </div>
       </footer>

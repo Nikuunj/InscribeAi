@@ -26,7 +26,7 @@ function Testimonials() {
 
   return (
     <div className="px-10 py-6" id='test'>
-      <h2 className="text-lg text-blue-600 text-center mt-10">Testimonials</h2>
+      <h2 className="text-lg text-[#00bd87] text-center mt-10">Testimonials</h2>
       <p className='text-[40px] font-[650] text-center mb-10'>InscribeAi is rated 4.9/5 stars in over 500 reviews</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-32 gap-5">
         {testi.map((val, index) => (
