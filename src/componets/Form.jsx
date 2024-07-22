@@ -63,7 +63,7 @@ function Form() {
       });
       console.log(response.data);
       setOutput(response.data);
-      alert('Your data has been submitted');
+      // alert('Your data has been submitted');
       setFormData({
         urls: [],
         blogName: '',

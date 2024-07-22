@@ -27,9 +27,9 @@ function Steps() {
             "first": "InscribeAi generates content that meets the ",
             "last" : "search intent",
             "second": "🎯 I benefit from my ready-to-use content that ranks me #1 for the targeted keyword",
-            "third": "SEOPITAL GENERATE: I don't have existing content for this keyword.",
+            "third": "InscribeAi GENERATE: I don't have existing content for this keyword.",
             "forth": "👉 My assistant generates content that is enjoyable to read (not CHATGPT like), unique and free of plagiarism that includes all the success factors.",
-            "five": "SEOPITAL OPTIMIZE: I already have existing content for this keyword and I want to improve it to increase my ranking.",
+            "five": "InscribeAi OPTIMIZE: I already have existing content for this keyword and I want to improve it to increase my ranking.",
             "six": "👉 My assistant enriches my existing content with the missing success factors, naturally and respecting the tone and writing style I have provided.",
             "img": img3,
             "img1": img4
@@ -56,9 +56,9 @@ function Steps() {
             </div>
             <div className='space-y-2'>
                 <p className='text-start font-[550] text-lg'>{val.second}</p>
-                <p className='text-start text-zinc-400'>{index === 2 && (<span className='text-slate-700 font-[550]'>SEOPITAL GENERATE:</span>)} {val.third}</p>
+                <p className='text-start text-zinc-400'>{index === 2 && (<span className='text-slate-700 font-[550]'>InscribeAi GENERATE:</span>)} {val.third}</p>
                 {val.forth && <p className='text-start text-zinc-400'>{val.forth}</p>}
-                {val.five && <p className='text-start text-zinc-400'>{index === 2 && (<span className='text-slate-700 font-[550]'>SEOPITAL OPTIMIZE:</span>)} {val.five}</p>}
+                {val.five && <p className='text-start text-zinc-400'>{index === 2 && (<span className='text-slate-700 font-[550]'>InscribeAi OPTIMIZE:</span>)} {val.five}</p>}
                 {val.six && <p className='text-start text-zinc-400'>{val.six}</p>}
             </div>
         </div>
