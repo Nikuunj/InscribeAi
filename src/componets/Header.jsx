@@ -44,7 +44,7 @@ function Header() {
       name : 'Form'
     },
     {
-      to: '#test',
+      to: '#testimonial',
       name: 'Testimonials',
     },
     {
