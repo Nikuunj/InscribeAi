@@ -4,14 +4,15 @@ import axios from 'axios';
 import { ScaleLoader } from 'react-spinners';
 
 function Form() {
-  const envUrl = 'https://machoharsh.tech/create_blog/';
+  const envUrl = 'https://inscribeai.onrender.com/create_blog/';
 
   const [formData, setFormData] = useState({
-    urls: [],
-    blogName: '',
-    tone: '',
-    target: ''
+    add_website_link: [],
+    blog_name: '',
+    desired_tone: '',
+    target_audience: ''
   });
+  
   const [url, setUrl] = useState('');
   const [output, setOutput] = useState('');
   const [load, setLoad] = useState(false);
@@ -31,14 +32,19 @@ function Form() {
 
   const addUrl = (e) => {
     e.preventDefault();
-    if (url.trim() && !formData.urls.includes(url)) {
+    if (url.trim() && !formData.add_website_link.includes(url)) {
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        setError('Please enter a valid URL starting with http:// or https://.');
+        return;
+      }
       setFormData((prevData) => ({
         ...prevData,
-        urls: [...prevData.urls, url]
+        add_website_link: [...prevData.add_website_link, url]
       }));
       setUrl('');
+      setError('');
     } else {
-      setError('Please enter a valid, unique URL.');
+      setError('Please enter a unique URL.');
     }
   };
 
@@ -47,34 +53,37 @@ function Form() {
     setOutput('');
     setLoad(true);
     setError('');
-    console.log(formData.urls);
+    console.log('Submitting data:', formData);
+
+    // Ensure all fields are filled
+    if (!formData.blog_name || formData.add_website_link.length === 0 || !formData.target_audience || !formData.desired_tone) {
+      setError('Please fill all fields and add at least one URL.');
+      setLoad(false);
+      return;
+    }
 
     try {
-      const response = await axios.post(envUrl, {
-        add_website_link: formData.urls,
-        blog_name: formData.blogName,
-        desired_tone: formData.tone,
-        target_audience: formData.target
-      }, {
+      const response = await axios.post(envUrl, formData, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
       });
-      console.log(response.data);
-      setOutput(response.data);
-      // alert('Your data has been submitted');
+      console.log('Response:', response.data);
+      setOutput(response.data.url);
       setFormData({
-        urls: [],
-        blogName: '',
-        tone: '',
-        target: ''
+        add_website_link: [],
+        blog_name: '',
+        desired_tone: '',
+        target_audience: ''
       });
       setUrl('');
     } catch (error) {
+      console.error('Error:', error);
       setError('An error occurred while submitting the data. Please try again.');
       if (error.response) {
-        setError(error.response.data.error);
+        console.error('Error response:', error.response);
+        setError(error.response.data.detail || 'An unknown error occurred');
       }
     } finally {
       setLoad(false);
@@ -109,9 +118,9 @@ function Form() {
           <div className="mb-4">
             <h4 className="text-lg font-semibold">URLs:</h4>
             <ul className="list-disc list-inside">
-              {formData.urls.map((url, index) => (
+              {formData.add_website_link.map((url, index) => (
                 <li key={index} className="text-gray-700">
-                  <a href={`https://${url}`} target='_blank' rel='noopener noreferrer' className="text-blue-500 underline">
+                  <a href={url.startsWith('http') ? url : `https://${url}`} target='_blank' rel='noopener noreferrer' className="text-blue-500 underline">
                     {url}
                   </a>
                 </li>
@@ -120,24 +129,24 @@ function Form() {
           </div>
 
           <InputBox
-            id="blogName"
+            id="blog_name"
             type="text"
             placeholder="Enter Blog Name"
-            value={formData.blogName}
+            value={formData.blog_name}
             change={handleChange}
           />
           <InputBox
-            id="tone"
+            id="desired_tone"
             type="text"
             placeholder="Enter Tone"
-            value={formData.tone}
+            value={formData.desired_tone}
             change={handleChange}
           />
           <InputBox
-            id="target"
+            id="target_audience"
             type="text"
             placeholder="Enter Target Audience"
-            value={formData.target}
+            value={formData.target_audience}
             change={handleChange}
           />
 
@@ -145,7 +154,7 @@ function Form() {
             type="submit"
             className="mt-4 w-full bg-[#365486] text-white py-2 rounded-md hover:bg-[#2b3b68] transition duration-300"
           >
-            🔥🔥🔥
+            Create Blog
           </button>
           {load && (
             <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-35">
@@ -156,7 +165,7 @@ function Form() {
         {output && (
           <div className="mt-8 p-6 rounded-lg shadow-lg">
             <span className="bg-gradient-to-r bg-clip-text text-transparent border-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-1 rounded-md text-4xl font-[650] my-2">
-              URL:
+              Blog URL:
             </span>
             <a href={output} target='_blank' rel='noopener noreferrer'>
               <span className="text-gray-700 text-3xl font-[500] px-2">{output}</span>
