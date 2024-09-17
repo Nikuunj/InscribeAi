@@ -119,11 +119,11 @@ function Form() {
             <h4 className="text-lg font-semibold">URLs:</h4>
             <ul className="list-disc list-inside">
               {formData.add_website_link.map((url, index) => (
-                <li key={index} className="text-gray-700">
+                <p key={index} className="text-gray-700">
                   <a href={url.startsWith('http') ? url : `https://${url}`} target='_blank' rel='noopener noreferrer' className="text-blue-500 underline">
                     {url}
                   </a>
-                </li>
+                </p>
               ))}
             </ul>
           </div>
